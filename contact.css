@@ -1,7 +1,8 @@
 body{
     margin: 0px;
     padding: 0px;
-    color: azure;
+    /* color: azure; */
+    color: #000;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -9,10 +10,10 @@ body{
     #background-container{
         width: 100%;
         height: auto;
-        background-image: url('./board.jpg');
+        /* background-image: url('./board.jpg');
         
         background-size: cover;
-        padding-bottom: 100px;
+        padding-bottom: 100px; */
     }
     #contact-container{
         /* border: 1px solid plum; */
@@ -35,7 +36,8 @@ body{
         padding: 0px;
         font-size: 68px;
         text-align: center;
-        color: azure;
+        /* color: azure; */
+        color: #000;
         font-family: "Poppins", sans-serif;
         font-weight: 600;
         font-style: normal;
@@ -51,9 +53,9 @@ body{
         /* margin: 20px; */
     }
     .contact-form {
-        border: 3px solid red;
+        /* border: 3px solid red; */
         margin: 20px;
-        background-color: linear-gradient(12deg, #281522, #201e34);
+        /* background-color: linear-gradient(12deg, #281522, #201e34); */
         
          
         border: none;
@@ -89,6 +91,7 @@ body{
         font-size: 16px;
         color: #fff;
         background-color: #24232b;
+        /* background-color: #ffffffed; */
     }
 
     .contact-form textarea {
