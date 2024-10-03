@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/38e95fb4e5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Vision Board</title>
+</head>
+<body>
+    <nav>
+        <div class="menu" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="nav_mid">
+            <i title="Lock the drawing pad to move around" class="fa-solid fa-lock"></i>
+            <i title="Hand (panning tool)" class="fa-solid fa-hand"></i>
+            <i title="Selection" class="fa-solid fa-arrow-pointer"></i>
+            <i title="Rectangle" id="rectangle" class="fa-solid fa-square"></i>
+            <i title="Circle" id="circle" class="fa-solid fa-circle"></i>
+            <i title="Arrow" class="fa-solid fa-arrow-right"></i>
+            <i title="Line" class="fa-solid fa-minus"></i>
+            <i title="Pencil" class="fa-solid fa-pencil"></i>
+            <i title="Text" class="fa-solid fa-a"></i>
+            <i title="Insert Image" class="fa-solid fa-image"></i>
+            <i title="Eraser" class="fa-solid fa-eraser"></i>
+        </div>
+        <div class="nav_right">
+            <button>Add Member <i class="fa-solid fa-user-plus"></i></button>
+        </div>
+    </nav>
+
+
+    <!-- Menu sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#"><i class="fa-solid fa-folder"></i>Open</a></li>
+            <li><a href="#"><i class="fa-solid fa-download"></i>Save to...</a></li>
+            <li><a href="#"><i class="fa-solid fa-file-export"></i>Export image...</a></li>
+            <li><a href="#"><i class="fa-solid fa-user-plus"></i>Live collaboration...</a></li>
+            <li><a href="#"><i class="fa-solid fa-circle-question"></i>Help</a></li>
+            <li><a href="#"><i class="fa-solid fa-trash"></i>Reset the canvas</a></li>
+            <li><a href="#"><i class="fa-solid fa-user"></i>Sign in</a></li>
+        </ul>
+    </div>
+
+    <!-- Add member for collaboration pop up -->
+    <div class="popup-overlay" id="addMemberPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <p>Add Member</p>
+                <span class="close-popup" id="closePopup">&times;</span>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a member...">
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Search results will be dynamically added here -->
+            </div>
+        </div>
+
+</body>
+</html>
+<script src="index.js"></script>
