@@ -119,4 +119,35 @@ body{
         margin: auto;
         font-size: 14px;
     }
-    
+
+/* Tablet (portrait and landscape) */
+@media (max-width: 1024px) {
+    #faq-container, #contact-details {
+        width: 80%;
+    }
+    .faq-heading h1 {
+        font-size: 48px;
+    }
+    .contact-form {
+        padding: 15px;
+    }
+}
+
+/* Mobile (portrait) */
+@media (max-width: 600px) {
+    #faq-container, #contact-details {
+        width: 90%;
+    }
+    .faq-heading h1 {
+        font-size: 36px;
+    }
+    .faq-heading p {
+        font-size: 14px;
+    }
+    .contact-form {
+        padding: 10px;
+    }
+    .contact-form button {
+        font-size: 16px;
+    }
+}
