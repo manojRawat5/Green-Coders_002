@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <title>Test6</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      background-color: #f4f4f4;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .toolbar button, .toolbar input, .toolbar select {
+      margin: 0 5px;
+      padding: 8px 12px;
+      border: none;
+      background-color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    button, input, select {
+      margin: 0 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .toolbar button:hover, .toolbar input:hover, .toolbar select:hover {
+      background-color: #e0e0e0;
+    }
+    .toolbar button i {
+      margin-right: 5px;
+    }
+
+
+    button:active, input:focus, select:focus {
+      outline: none;
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 50px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     
+    }
+
+    canvas {
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+
+    .sticky-note {
+      /* position: absolute;
+      background-color: yellow;
+      padding: 10px;
+      border: 1px solid black;
+      resize: both;
+      overflow: auto;
+      cursor: pointer; Change cursor to pointer */
+      position: absolute;
+      background-color: yellow;
+      padding: 10px;
+      border: 1px solid black;
+      resize: both;
+      overflow: auto;
+      cursor: grabbing; /* Change cursor to move */
+      width: 150px; /* Set a default width */
+      height: 100px; /* Set a default height */
+    }
+
+    .selected {
+      border: 2px solid red; /* Highlight selected sticky notes */
+    }
+
+    body.light {
+      background-color: #fff;
+    }
+
+    body.dark {
+      background-color: #333;
+      color: #fff;
+    }
+
+    body.dark canvas {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+    <div class="toolbar">
+        <button id="pen-tool"><i class="fas fa-pencil-alt"></i> Pen</button>
+        <button id="eraser-tool"><i class="fas fa-eraser"></i> Eraser</button>
+        <button id="line-tool"><i class="fas fa-slash"></i> Line</button>
+        <button id="circle-tool"><i class="far fa-circle"></i> Circle</button>
+        <button id="rect-tool"><i class="fas fa-square"></i> Rectangle</button>
+        <button id="text-tool"><i class="fas fa-font"></i> Text</button>
+        <button id="sticky-note-tool"><i class="fas fa-sticky-note"></i> Sticky Note</button>
+        <button id="delete-sticky-notes"><i class="fas fa-trash-alt"></i> Delete Notes</button>
+        <input type="color" id="color-picker" title="Choose color">
+        <input type="range" id="line-thickness" min="1" max="10" value="2" title="Line thickness">
+        <button id="clear-canvas"><i class="fas fa-times"></i> Clear</button>
+        <button id="save-canvas"><i class="fas fa-save"></i> Save</button>
+        <button id="zoom-in"><i class="fas fa-search-plus"></i> Zoom In</button>
+        <button id="zoom-out"><i class="fas fa-search-minus"></i> Zoom Out</button>
+        <select id="theme-switcher">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+      
+      <div class="canvas-container">
+        <canvas id="whiteboard"></canvas>
+      </div>
+  
+  <script>
+    const canvas = document.getElementById('whiteboard');
+    const ctx = canvas.getContext('2d');
+    const stickyNoteTool = document.getElementById('sticky-note-tool');
+    const deleteStickyNotesBtn = document.getElementById('delete-sticky-notes');
+    const colorPicker = document.getElementById('color-picker');
+    const lineThickness = document.getElementById('line-thickness');
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+    const themeSwitcher = document.getElementById('theme-switcher');
+    
+    let isDrawing = false;
+    let startX = 0;
+    let startY = 0;
+    let currentTool = 'pen';
+    let scaleFactor = 1;
+    let textInput, isTyping = false;
+    let shapes = []; // Array to store drawn shapes
+    let currentPenPath = []; // Array to store current pen path
+    let isDragging = false; // Track dragging state
+    let dragOffsetX, dragOffsetY; // Store drag offsets
+
+
+    // Set canvas dimensions
+    canvas.width = window.innerWidth * 0.9;
+    canvas.height = window.innerHeight * 0.8;
+
+    function startDrawing(e) {
+      isDrawing = true;
+      startX = e.offsetX;
+      startY = e.offsetY;
+      if (isTyping) return;
+    if (currentTool === 'text') {
+    isTyping = true;
+    textInput = prompt("Enter your text:");
+    ctx.font = `${lineThickness.value * 4}px Arial`;
+    ctx.fillStyle = colorPicker.value;
+    ctx.fillText(textInput, startX, startY);
+    isTyping = false;
+  }else if (currentTool === 'pen') {
+    currentPenPath = [{ x: startX, y: startY, color: colorPicker.value, lineWidth: lineThickness.value }];
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+  }
+  else if (currentTool === 'eraser') {
+    ctx.clearRect(startX, startY, lineThickness.value, lineThickness.value); // Clear initial area
+    // Save eraser action to shapes
+    shapes.push({ type: 'eraser', x: startX, y: startY, size: lineThickness.value });
+  }
+    }
+
+    function draw(e) {
+      if (!isDrawing || currentTool === 'text' ) return;
+
+      ctx.lineWidth = lineThickness.value;
+      ctx.strokeStyle = colorPicker.value;
+
+      if (currentTool === 'pen') {
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+          // Save the current pen path
+        currentPenPath.push({ x: e.offsetX, y: e.offsetY });
+      } else if (currentTool === 'eraser') {
+        ctx.clearRect(e.offsetX, e.offsetY, lineThickness.value, lineThickness.value); // Erase while moving
+        shapes.push({ type: 'eraser', x: e.offsetX, y: e.offsetY, size: lineThickness.value });
+      } else {
+        redraw(); // Redraw existing elements before drawing the new shape
+        if (currentTool === 'line') {
+          drawLine(e.offsetX, e.offsetY);
+        } else if (currentTool === 'circle') {
+          drawCircle(e.offsetX, e.offsetY);
+        } else if (currentTool === 'rectangle') {
+          drawRectangle(e.offsetX, e.offsetY);
+        }
+      }
+    }
+
+    function stopDrawing(e) {
+      if (!isDrawing) return;
+
+      isDrawing = false;
+      ctx.closePath();
+
+        // Save pen drawing to shapes if the current tool is pen
+      if (currentTool === 'pen') {
+    const penPathData = { 
+      type: 'pen', 
+      path: currentPenPath, 
+      color: colorPicker.value, 
+      lineWidth: lineThickness.value 
+    };
+    shapes.push(penPathData);
+  }
+    else if (currentTool === 'line') {
+        saveShape('line', startX, startY, e.offsetX, e.offsetY);
+      } else if (currentTool === 'circle') {
+        saveShape('circle', startX, startY, e.offsetX, e.offsetY);
+      } else if (currentTool === 'rectangle') {
+        saveShape('rectangle', startX, startY, e.offsetX, e.offsetY);
+      }
+      
+        currentPenPath = []; // Reset the current pen path after saving
+    }
+
+    function saveShape(type, startX, startY, endX, endY) {
+      shapes.push({ type, startX, startY, endX, endY, color: colorPicker.value, lineWidth: lineThickness.value });
+      redraw(); // Redraw all shapes after saving the new one
+    }
+
+    function drawLine(endX, endY) {
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+    }
+
+    function drawCircle(endX, endY) {
+      const radius = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+      ctx.beginPath();
+      ctx.arc(startX, startY, radius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    function drawRectangle(endX, endY) {
+      const width = endX - startX;
+      const height = endY - startY;
+      ctx.beginPath();
+      ctx.rect(startX, startY, width, height);
+      ctx.stroke();
+    }
+
+    function redraw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas before redrawing all shapes
+      shapes.forEach(shape => {
+        ctx.strokeStyle = shape.color;
+        ctx.lineWidth = shape.lineWidth;
+
+        if (shape.type === 'line') {
+          ctx.beginPath();
+          ctx.moveTo(shape.startX, shape.startY);
+          ctx.lineTo(shape.endX, shape.endY);
+          ctx.stroke();
+        } else if (shape.type === 'circle') {
+          const radius = Math.sqrt(Math.pow(shape.endX - shape.startX, 2) + Math.pow(shape.endY - shape.startY, 2));
+          ctx.beginPath();
+          ctx.arc(shape.startX, shape.startY, radius, 0, Math.PI * 2);
+          ctx.stroke();
+        } else if (shape.type === 'rectangle') {
+          const width = shape.endX - shape.startX;
+          const height = shape.endY - shape.startY;
+          ctx.beginPath();
+          ctx.rect(shape.startX, shape.startY, width, height);
+          ctx.stroke();
+        }else if (shape.type === 'pen') {
+      ctx.strokeStyle = shape.color;
+      ctx.lineWidth = shape.lineWidth;
+      shape.path.forEach((point, index) => {
+        if (index === 0) {
+          ctx.moveTo(point.x, point.y);
+        } else {
+          ctx.lineTo(point.x, point.y);
+        }
+      });
+      ctx.stroke();
+    }
+    else if (shape.type === 'eraser') {
+      // Eraser actions can be represented as a small square or circle on the canvas
+      ctx.clearRect(shape.x, shape.y, shape.size, shape.size); // Optionally keep track of where erasures occurred
+    }
+  });
+}
+
+   
+
+    // Tool selection
+    document.getElementById('pen-tool').onclick = () => currentTool = 'pen';
+    document.getElementById('eraser-tool').onclick = () => currentTool = 'eraser';
+    document.getElementById('line-tool').onclick = () => currentTool = 'line';
+    document.getElementById('circle-tool').onclick = () => currentTool = 'circle';
+    document.getElementById('rect-tool').onclick = () => currentTool = 'rectangle';
+    document.getElementById('text-tool').onclick = () => currentTool = 'text';
+
+    // Sticky note functionality
+    stickyNoteTool.onclick = function () {
+      const note = document.createElement('textarea');
+      note.className = 'sticky-note';
+      note.value='New STicky Note'
+      note.contentEditable = true;
+      note.style.top = `${Math.random() * canvas.height}px`;
+      note.style.left = `${Math.random() * canvas.width}px`;
+
+      note.onmousedown = (e) => {
+        isDragging = true;
+        dragOffsetX = e.clientX - note.getBoundingClientRect().left;
+        dragOffsetY = e.clientY - note.getBoundingClientRect().top;
+        note.classList.add('selected');
+      };
+
+      note.onmouseup = () => {
+        isDragging = false;
+        note.classList.remove('selected');
+      };
+
+      note.onmousemove = (e) => {
+        if (isDragging) {
+          note.style.left = `${e.clientX - dragOffsetX}px`;
+          note.style.top = `${e.clientY - dragOffsetY}px`;
+        }
+      };
+
+    //   document.body.appendChild(note);
+
+      // Click event for selecting sticky notes
+      note.onclick = function (event) {
+        event.stopPropagation(); // Prevent event from bubbling to document
+        note.classList.toggle('selected'); // Toggle selection
+      };
+
+      document.body.appendChild(note);
+    };
+
+    // Delete selected sticky notes
+    deleteStickyNotesBtn.onclick = function () {
+      const selectedNotes = document.querySelectorAll('.sticky-note.selected');
+      selectedNotes.forEach(note => note.remove());
+    };
+
+    // Theme switcher
+    themeSwitcher.onchange = function () {
+      document.body.className = themeSwitcher.value;
+    };
+
+    // Zoom In/Out functionality
+    zoomInBtn.onclick = () => {
+      scaleFactor *= 1.1;
+      ctx.scale(1.1, 1.1);
+      redraw();
+    };
+
+
+ 
+    zoomOutBtn.onclick = () => {
+      scaleFactor /= 1.1;
+      ctx.scale(0.9, 0.9);
+      redraw();
+    };
+
+  
+    // Clear canvas
+    document.getElementById('clear-canvas').onclick = function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      shapes = []; // Clear the shapes array
+    };
+
+   // Save canvas as image
+document.getElementById('save-canvas').onclick = function () {
+  const tempCanvas = document.createElement('canvas');
+  const tempCtx = tempCanvas.getContext('2d');
+
+  // Set temporary canvas dimensions
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+
+  // Fill with white background
+  tempCtx.fillStyle = 'white';
+  tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+  // Draw original canvas on top of the temporary canvas
+  tempCtx.drawImage(canvas, 0, 0);
+
+  // Save the temporary canvas as an image
+  const link = document.createElement('a');
+  link.download = 'whiteboard.png';
+  link.href = tempCanvas.toDataURL();
+  link.click();
+};
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+  </script>
+</body>
+</html>
