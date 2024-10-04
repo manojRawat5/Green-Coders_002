@@ -1,13 +1,3 @@
-const start_drawing_btn = document.getElementById("start_drawing")
-
-start_drawing_btn.addEventListener("click", function(){
-    window.location.href = "/whiteboard/index.html"
-})
-
-
-
-// Handling menu for small screen
-
 const menuIcon = document.getElementById("menu_icon");
 const small_screen_links = document.getElementById("small_screen_links");
 
@@ -68,6 +58,8 @@ window.addEventListener("resize", function () {
     }
   }
 
-  
- 
-  
+
+  const logo = document.getElementById("logo")
+  logo.addEventListener("click", function(){
+    window.location.href = "../landingPage/landingpage.html"
+  })
