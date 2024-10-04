@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drawing App JavaScript | CodingNepal</title>
+    <link rel="stylesheet" href="./test.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="./test.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="tools-board">
+        <div class="row">
+          <label class="title">Shapes</label>
+          <ul class="options">
+            <li class="option tool" id="rectangle">
+              <img src="icons/rectangle.svg" alt="">
+              <span>Rectangle</span>
+            </li>
+            <li class="option tool" id="circle">
+              <img src="icons/circle.svg" alt="">
+              <span>Circle</span>
+            </li>
+            <li class="option tool" id="triangle">
+              <img src="icons/triangle.svg" alt="">
+              <span>Triangle</span>
+            </li>
+            <li class="option">
+              <input type="checkbox" id="fill-color">
+              <label for="fill-color">Fill color</label>
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <label class="title">Options</label>
+          <ul class="options">
+            <li class="option active tool" id="brush">
+              <img src="icons/brush.svg" alt="">
+              <span>Brush</span>
+            </li>
+            <li class="option tool" id="eraser">
+              <img src="icons/eraser.svg" alt="">
+              <span>Eraser</span>
+            </li>
+            <li class="option">
+              <input type="range" id="size-slider" min="1" max="30" value="5">
+            </li>
+          </ul>
+        </div>
+        <div class="row colors">
+          <label class="title">Colors</label>
+          <ul class="options">
+            <li class="option"></li>
+            <li class="option selected"></li>
+            <li class="option"></li>
+            <li class="option"></li>
+            <li class="option">
+              <input type="color" id="color-picker" value="#4A98F7">
+            </li>
+          </ul>
+        </div>
+        <div class="row buttons">
+          <button class="clear-canvas">Clear Canvas</button>
+          <button class="save-img">Save As Image</button>
+        </div>
+      </section>
+      <section class="drawing-board">
+        <canvas></canvas>
+      </section>
+
+<!-- 
+      <section class="tools-board-2">
+        <div class="row buttons">
+            <span class="material-symbols-outlined blue" style="font-size: 37px;">zoom_in</span>
+            <br>
+            <span class="material-symbols-outlined blue" style="font-size: 37px;">zoom_out</span>
+            <br>
+            <span class="material-symbols-outlined blue" style="font-size: 37px;">undo</span>
+            <br>
+            <span class="material-symbols-outlined blue" style="font-size: 37px;">redo</span>
+             <br>
+             <br><br>
+             <div id="Theme">
+                <div style="font-size: 20px;"><span>Theme</span></div>
+                <div><span class="material-symbols-outlined blue" style="font-size: 31px;">
+                    light_mode
+                    </span>
+                    <br>
+                    <span class="material-symbols-outlined blue" style="font-size: 31px;">
+                        dark_mode
+                        </span></div>
+             </div>
+             <br>
+             <span class="material-symbols-outlined blue blue" style="font-size: 37px;">
+                add_photo_alternate
+                </span>
+        </div>
+      </section> -->
+
+      <section class="tools-board-2">
+        <div class="row buttons">
+          <button class="zoom-out" style="font-size: 37px;">
+            <span class="material-symbols-outlined blue">zoom_in</span>
+          </button>
+          <button class="zoom-in" style="font-size: 37px;">
+            <span class="material-symbols-outlined">zoom_out</span>
+          </button>
+          <button class="undo" style="font-size: 37px;">
+            <span class="material-symbols-outlined">undo</span>
+          </button>
+          <button class="redo" style="font-size: 37px;">
+            <span class="material-symbols-outlined">redo</span>
+          </button>
+          <div id="Theme">
+            <div style="font-size: 20px;"><span>Theme</span></div>
+            <div>
+              <span class="material-symbols-outlined blue" style="font-size: 31px;">light_mode</span>
+              <span class="material-symbols-outlined blue" style="font-size: 31px;">dark_mode</span>
+            </div>
+          </div>
+          <button class="upload-image" style="font-size: 37px;">
+            <span class="material-symbols-outlined">add_photo_alternate</span>
+          </button>
+        </div>
+      </section> 
+
+    </div>
+    
+  </body>
+</html>
