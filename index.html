@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./LandingPage/utils/logo.png">
+    <script
+      src="https://kit.fontawesome.com/38e95fb4e5.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./landingPage/landing.css" />
+    <title>VISION BOARD, where collaboration meets creativity!</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="./landingPage/utils/main_logo.png" alt="LOGO" />
+      <div class="links">
+        <a href="#about_us">About Us</a>
+        <a href="../Whiteboard/whiteboard.html" id="whiteboard_large">WhiteBoard</a>
+        <a href="../Faq/faq.html" id="faq">Faq</a>
+        <a href="../Contact/contact.html">Contact Us</a>
+        <a id="signup" onclick="removeToken()" href="../Signup/signup.html"
+          >Sign Up</a
+        >
+      </div>
+
+      <div class="nav_menu_icon">
+        <i id="menu_icon" class="fa-solid fa-bars"></i>
+      </div>
+
+      <!-- Links for small screen -->
+      <div id="small_screen_links" class="small_screen_links">
+        <a href="#about">About Us</a>
+        <a href="../Whiteboard/whiteboard.html" id="whiteboard_small">WhiteBoard</a>
+        <a href="../Faq/faq.html" id="faq">Faq</a>
+        <a href="../Contact/contact.html">Contact Us</a>
+        <a
+          id="signup_small"
+          onclick="removeToken()"
+          href="../Signup/signup.html"
+          >Sign Up</a
+        >
+      </div>
+    </nav>
+
+    <main>
+      <div class="main_container">
+        <section class="sec1">
+          <div class="sec1_left">
+            <img class="hero_img" src="./landingPage/utils/logo.png" alt="hero-image" />
+          </div>
+          <div class="sec1_right">
+            <p class="sec1_right_header">
+              <span class="sec1_right_span1">Online whiteboard</span> <br />
+              for sharing ideas and collaboration.
+            </p>
+            <p class="sec1_right_desc">
+              Real-time synchronized canvas for your and your peers.
+              <span>Brainstorm</span>, <span>share ideas</span> and
+              <span>collaborate</span> to do your best work!
+            </p>
+            <div>
+              <button id="start_drawing" class="styled-btn">
+                Start Drawing <i class="fa-solid fa-pencil"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="sec2">
+          <div class="sec2_left">
+            <p class="sec2_title">Real-time collaboration made simple!</p>
+            <p class="sec2_desc1">
+              Real-time drawing changes the game for remote teams. Instantly
+              synced cursors make it easy to explain ideas as they unfold.
+            </p>
+            <p class="sec2_desc1">
+              Interactivity is key, and we’ve designed a whiteboard that mirrors
+              the ease of a physical one, running smoothly even on low-bandwidth
+              connections.
+            </p>
+          </div>
+          <div class="sec2_right">
+            <img
+              class="img"
+              src="https://www.mindmanager.com/static/mm/images/features/whiteboard-template/section-1.jpg"
+            />
+          </div>
+        </section>
+        <section class="sec3">
+          <div class="sec3_left">
+            <img
+              class="img"
+              src="https://vibe.us/img/smartboard-55/canvas/brush-mode_huaac5e4490be11338f4bc05b9bd00e48d_194591_1680x0_resize_q90_h2_lanczos_3.9f73fbd4c0f7d2de5e58b8c9cb742ce0397b20316eeabdb9ed3ce77da35a3f6c.webp"
+            />
+          </div>
+          <div class="sec3_right">
+            <p class="sec2_title">
+              Use different colors and brushes when drawing!
+            </p>
+            <p class="sec2_desc1">
+              Quickly switch between brushes and colors to customize your
+              drawings. This flexibility lets you emphasize key ideas with every
+              stroke
+            </p>
+            <p class="sec2_desc1">
+              For collaboration, this feature helps teams express thoughts
+              visually. Varied brushes and colors highlight unique
+              contributions, making brainstorming dynamic.
+            </p>
+          </div>
+        </section>
+        <section class="sec2">
+          <div class="sec3_right">
+            <p class="sec2_title">Zoom & pan your way around!</p>
+            <p class="sec2_desc1">
+              Our whiteboard is zoomable. Zoom in to draw and see the tiny
+              details of your drawings. Or zoom out and get the big picture of
+              the whole whiteboard.
+            </p>
+            <p class="sec2_desc1">
+              Apart from zooming you can pan and move the board around. Create a
+              big whiteboard and enjoy practically unlimited drawing space.
+              Without performance degradation.
+            </p>
+          </div>
+          <div class="sec3_left">
+            <video autoplay muted loop class="video">
+              <source src="./landingPage/utils/MXuvKdR - Imgur.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </section>
+        <section class="sec3">
+          <div class="sec2_left">
+            <video autoplay muted loop class="video">
+              <source src="./landingPage/utils/EsLmPaK.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="sec3_right">
+            <p class="sec2_title">🎉 And don't forget to have fun!</p>
+            <p class="sec2_desc1">
+              When not working you can play <b>pan and paper </b>games remotely.
+              Spend the time after of your meeting by playing games on a
+              whiteboard.
+            </p>
+            <p class="sec2_desc1">
+              Tic-tac-toe, hangman are games that work great as ice-breaker
+              activities or to shorted the time you wait for your untimely
+              colleagues.
+            </p>
+          </div>
+        </section>
+
+        <section id="about_us" class="about_us">
+          <div class="container">
+            <p class="sec2_title">About Us</p>
+            <p class="about_desc1">
+              Welcome to [VISION BOARD], where collaboration meets creativity!
+              Our mission is to transform the way individuals and teams
+              brainstorm, plan, and share ideas through an intuitive digital
+              whiteboard experience.
+            </p>
+            <p class="about_desc1">
+              Founded by a team of passionate innovators, we recognized the need
+              for a versatile platform that brings people together, whether
+              they’re in the same room or halfway across the world. Our digital
+              whiteboard combines the simplicity of traditional brainstorming
+              with the power of modern technology, making it easy for users of
+              all backgrounds to visualize their thoughts and work together
+              seamlessly.
+            </p>
+            <p class="about_desc1">
+              Vision Board is a collaborative whiteboard app that allows teams
+              to brainstorm, create, and visualize ideas in a seamless and
+              interactive way. We are passionate about fostering creativity and
+              teamwork through our platform, enabling people to turn their
+              visions into reality.
+            </p>
+            <div class="team_sec">
+              <p class="sec2_title">Our Team</p>
+              <div class="team">
+                <div class="team-member" id="member1">
+                  <div class="avatar_container">
+                    <img
+                    style="object-fit: contain;"
+                      src="./landingPage/utils/manoj.jpg"
+                      alt="Team Member 1"
+                    />
+                  </div>
+                  <h3>Manoj Rawat</h3>
+                  <p>Team Lead</p>
+                  <p>
+                    Jane is the team lead, guiding the team with a focus on
+                    collaboration and innovation, ensuring smooth project
+                    execution.
+                  </p>
+                </div>
+                <div class="team-member" id="member1">
+                  <div class="avatar_container">
+                    <img
+                      src="./landingPage/utils/mahesh.png"
+                      alt="Team Member 1"
+                    />
+                  </div>
+                  <h3>Mahesh</h3>
+                  <p>Team Member</p>
+                  <p>
+                    Jane is the team lead, guiding the team with a focus on
+                    collaboration and innovation, ensuring smooth project
+                    execution.
+                  </p>
+                </div>
+                <div class="team-member" id="member1">
+                  <div class="avatar_container">
+                    <img
+                      src="./landingPage/utils/deepthi.jpg"
+                      alt="Team Member 1"
+                    />
+                  </div>
+                  <h3>Deepthi</h3>
+                  <p>Team Member</p>
+                  <p>
+                    Jane is the team lead, guiding the team with a focus on
+                    collaboration and innovation, ensuring smooth project
+                    execution.
+                  </p>
+                </div>
+                <div class="team-member" id="member1">
+                  <div class="avatar_container">
+                    <img
+                      src="./landingPage/utils/joil.jpeg"
+                      alt="Team Member 1"
+                    />
+                  </div>
+                  <h3>Joel Thiek</h3>
+                  <p>Team Member</p>
+                  <p>
+                    Jane is the team lead, guiding the team with a focus on
+                    collaboration and innovation, ensuring smooth project
+                    execution.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">Vision Board</div>
+        <p>Transform ideas into action with seamless collaboration.</p>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="../faq/faq.html">FAQ</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 011.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772 4.915 4.915 0 01-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-bottom">
+          <p>Copyright ©2021 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<script src="./landingPage/landingPage.js"></script>
