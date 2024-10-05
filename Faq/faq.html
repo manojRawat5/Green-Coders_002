@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./faq.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html"><img id="logo" src="../landingPage/utils/main_logo.png" alt="LOGO" /></a>
+      <div class="links">
+        <a href="../Whiteboard/whiteboard.html" id="whiteboard_large">WhiteBoard</a>
+        <a href="../Faq/faq.html" id="faq">Faq</a>
+        <a href="../Contact/contact.html">Contact Us</a>
+        <a id="signup" onclick="removeToken()" href="../Signup/signup.html"
+          >Sign Up</a
+        >
+      </div>
+
+      <div class="nav_menu_icon">
+        <i id="menu_icon" class="fa-solid fa-bars"></i>
+      </div>
+
+      <!-- Links for small screen -->
+      <div id="small_screen_links" class="small_screen_links">
+        <a href="../Whiteboard/whiteboard.html" id="whiteboard_small">WhiteBoard</a>
+        <a href="../Faq/faq.html" id="faq">Faq</a>
+        <a href="../Contact/contact.html">Contact Us</a>
+        <a
+          id="signup_small"
+          onclick="removeToken()"
+          href="../Signup/signup.html"
+          >Sign Up</a
+        >
+      </div>
+    </nav>
+
+    <main>
+      <div id="background-container">
+        <div id="faq-container">
+          <div class="faq-heading">
+            <h1>FAQ</h1>
+            <p>
+              Questions you frequently ask, so we compiled the answers here.
+            </p>
+          </div>
+          <div id="faq-search">
+            <div id="search-category">
+              <h6>Type in your question or keywords:</h6>
+              <input
+                type="search"
+                name="ques-search"
+                id="ques-search"
+                placeholder="Search for a question..."
+              />
+            </div>
+            <div class="search-buttons">
+              <h6>Narrow the results down by category:</h6>
+              <div id="faq-buttons">
+                <button>Account</button>
+                <button>Board & Configuration</button>
+                <button>Plans and Payments</button>
+                <button>Import & Exports</button>
+                <button>Privacy & Security</button>
+                <button>Support</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="faq-items">
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">Are you offering a free trial?</p>
+            <p class="second-p">
+              You can use Onlineboard without registration for free. We are
+              currently in BETA, which means the PRO features are accessible to
+              everyone free of charge.
+            </p>
+          </div>
+
+          <!-- Second div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">When is the BETA going to end?</p>
+            <p class="second-p">
+              Honestly, we do not know. When we feel that our product is
+              finished and ready to be sold, we will announce moving out of the
+              beta.
+            </p>
+          </div>
+
+          <!-- Third div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">
+              What will be the price of the PRO account after BETA ends?
+            </p>
+            <p class="second-p">
+              The final pricing will depend on the state of the market and the
+              number of features we get implemented in our product. We are
+              trying to aim for a cost no greater than 5 euros per user per
+              month.
+            </p>
+          </div>
+
+          <!-- Fourth div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">
+              Are you offering a discount for schools during the COVID-19
+              crisis?
+            </p>
+            <p class="second-p">
+              We are aware that teaching via the internet has its downsides, and
+              we are trying to improve the experience by building a tool that
+              works exactly as a whiteboard in real-life. You can contact us
+              with your inquiry, and we can provide you with the details.
+            </p>
+          </div>
+
+          <!-- Fifth div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">How to enable the dark theme?</p>
+            <p class="second-p">
+              The application and webpage enable dark theme automatically when
+              your device is using a dark theme. You can also turn on the dark
+              mode manually in settings. The background color of the whiteboards
+              you are invited to is not affected by your dark theme setting.
+            </p>
+          </div>
+
+          <!-- Sixth div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">
+              Do you use Onlineboard when developing Onlineboard?
+            </p>
+            <p class="second-p">
+              Absolutely! It is the tool that speeds up meetings and helps with
+              planning in all our departments.
+            </p>
+          </div>
+
+          <!-- Seventh div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">Can I customize colors and background?</p>
+            <p class="second-p">
+              Color and background customization are features of our Pro plan.
+              You can change the colors and background of boards you have
+              created in settings. In a free plan, you can enable the dark theme
+              and enjoy boards with a black background.
+            </p>
+          </div>
+
+          <!-- Eighth div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">Do you offer discount for students?</p>
+            <p class="second-p">
+              We prefer issuing a license for the whole university/school. If
+              this option is not working for you, please send us a proof of
+              study (ISIC, contact us from a legit use university email), and we
+              will get back to you!
+            </p>
+          </div>
+
+          <!-- Ninth div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">Can I limit who can access my board?</p>
+            <p class="second-p">
+              You can set the privacy setting of your board to invite-only with
+              PRO mode. With our free plan, only people who have the URL address
+              of your board can access it. Be careful who you share the board
+              address with!
+            </p>
+          </div>
+
+          <!-- Tenth div structure -->
+          <div class="faq-child-container">
+            <span class="material-symbols-outlined">help</span>
+            <p class="first-p">Can you add anyfeature that user wants?</p>
+            <p class="second-p">
+              Yes. Please let us know if this feature is extremely important to
+              you by either voting for it in the suggestions section or by
+              writing directly to us.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">Vision Board</div>
+        <p>Transform ideas into action with seamless collaboration.</p>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="../faq/faq.html">FAQ</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 011.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772 4.915 4.915 0 01-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-bottom">
+          <p>Copyright ©2021 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<script src="faq.js"></script>
