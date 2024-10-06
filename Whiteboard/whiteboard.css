@@ -1,0 +1,328 @@
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+.home > img{
+  height: 40px;
+}
+body{
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+background: #4A98F7;
+}
+.container{
+display: flex;
+width: 100%;
+gap: 10px;
+padding: 10px 50px;
+flex-wrap: wrap;
+height: 100%;
+}
+section{
+background: #fff;
+border-radius: 7px;
+}
+.tools-board{
+width: 210px;
+padding: 15px 22px 0;
+}
+.tools-board .row{
+margin-bottom: 10px;
+font-weight: 600;
+}
+.row .options{
+list-style: none;
+margin: 6px 0 0 5px;
+}
+.row .options .option{
+display: flex;
+cursor: pointer;
+align-items: center;
+margin-bottom: 4px;
+font-size: 14px;
+}
+.option:is(:hover, .active) img{
+filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+.option :where(span, label){
+color: #5A6168;
+cursor: pointer;
+padding-left: 10px;
+}
+.option:is(:hover, .active) :where(span, label){
+color: #4A98F7;
+}
+.option #fill-color{
+cursor: pointer;
+height: 14px;
+width: 14px;
+}
+#fill-color:checked ~ label{
+color: #4A98F7;
+}
+.option #size-slider{
+width: 100%;
+height: 5px;
+margin-top: 10px;
+}
+.colors .options{
+display: flex;
+justify-content: space-between;
+}
+.colors .option{
+height: 20px;
+width: 20px;
+border-radius: 50%;
+margin-top: 3px;
+position: relative;
+}
+.colors .option:nth-child(1){
+background-color: #fff;
+border: 1px solid #bfbfbf;
+}
+.colors .option:nth-child(2){
+background-color: #000;
+}
+.colors .option:nth-child(3){
+background-color: #E02020;
+}
+.colors .option:nth-child(4){
+background-color: #6DD400;
+}
+.colors .option:nth-child(5){
+background-color: #4A98F7;
+}
+.colors .option.selected::before{
+position: absolute;
+content: "";
+top: 50%;
+left: 50%;
+height: 12px;
+width: 12px;
+background: inherit;
+border-radius: inherit;
+border: 2px solid #fff;
+transform: translate(-50%, -50%);
+}
+.colors .option:first-child.selected::before{
+border-color: #ccc;
+}
+.option #color-picker{
+opacity: 0;
+cursor: pointer;
+}
+.buttons button{
+width: 100%;
+color: #fff;
+border: none;
+outline: none;
+padding: 11px 0;
+font-size: 0.9rem;
+margin-bottom: 13px;
+background: none;
+border-radius: 4px;
+cursor: pointer;
+}
+.buttons .clear-canvas{
+color: #6C757D;
+border: 1px solid #6C757D;
+transition: all 0.3s ease;
+background-color: #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.clear-canvas:hover{
+color: #fff;
+background: #6C757D;
+}
+.buttons .save-img{
+background: #4A98F7;
+border: 1px solid #4A98F7;
+}
+.drawing-board{
+flex: 1;
+overflow: hidden;
+}
+.drawing-board canvas{
+width: 100%;
+height: 100%;
+}
+
+
+/* Undo and Redo buttons styles */
+.undo-btn, .redo-btn,.zoom-btn {
+width: 48%;
+color: #fff;
+border: none;
+outline: none;
+padding: 5px 0;
+font-size: 0.9rem;
+margin-bottom: 5px;
+background: #28A745; /* A green color for undo */
+border-radius: 4px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.redo-btn {
+background: #FFC107; /* A yellow color for redo */
+margin-bottom: 5px; /* Add space between redo and clear-canvas button */
+}
+
+.undo-btn:hover {
+background: #218838; /* Darker green on hover */
+}
+
+.redo-btn:hover {
+background: #E0A800; /* Darker yellow on hover */
+}
+
+.zoom-container {
+    margin-bottom: 5px; /* Add space between zoom buttons and undo/redo */
+
+}
+
+
+.zoom-btn {
+    background: #007BFF; /* A blue color for zoom */
+}
+
+.zoom-btn:hover{
+    opacity: 0.9; /* Slightly darker on hover */
+
+}
+
+
+
+
+.row-buttons button{
+  width: 48%;
+color: #fff;
+border: none;
+outline: none;
+padding: 5px 0;
+font-size: 0.9rem;
+margin-bottom: 10px;
+background: #28A745; /* A green color for undo */
+border-radius: 4px;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.row-buttons .clear-canvas{
+  background-color:gray;
+}
+
+/* Container for sticky notes */
+#sticky-note-container {
+    width: 350px;
+    height: 100vh;
+    border: 2px solid #3498db;
+    padding: 10px;
+    position: relative;
+    overflow-y: auto;
+    display: none;
+}
+
+/* Button to add sticky note */
+#add-note-btn {
+    margin: auto;
+    display: none;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: teal;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+}
+textarea{
+  border: none;
+  outline: none;
+}
+/* Style for sticky notes */
+.sticky-note {
+    background-color: pink;
+    border: none;
+    padding: 10px;
+    margin: 10px 15px;
+    width: 90%;
+    min-height: 50px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+/* Close button inside sticky note */
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/* Styling for the text area inside sticky note */
+textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    resize: none;
+}
+
+
+#show-sticky{
+  background-color: yellowgreen;
+  border: none;
+  outline: none;
+  margin-bottom: 5px;
+  color: black;
+  width: 70%;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#show-sticky:active{
+  background-color: red;
+}
+
+#text-options{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+
+}
+#image-upload{
+    margin-top: 5px;
+    width: 94px;
+    overflow: hidden;
+     font-size: 15px;
+     cursor: pointer;
+     border: none;
+     padding-bottom: 10px;
+}
+
+@media (max-width: 650px){
+  .container{
+    flex-direction: column;
+  }
+  section{
+    min-width: 90%;
+  }
+}
