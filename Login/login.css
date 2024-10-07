@@ -6,9 +6,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #3498db, #8e44ad);
+    background-color: #f4f7fa; 
     background-attachment: fixed;
 }
+
 .login-container {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 15px;
@@ -22,80 +23,93 @@ body {
     opacity: 0;
     animation: slideUp 1s ease forwards;
 }
+
 @keyframes slideUp {
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
+
 h1, h2 {
-    color: #fff;
+    /* color: #ffffff; */
     text-align: center;
     margin-bottom: 20px;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 h1 a {
     text-decoration: none;
-    color: #fff;
+    /* color: #ffffff; */
     transition: text-shadow 0.3s ease;
 }
+
 h1 a:hover {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
+
 form {
     display: flex;
     flex-direction: column;
 }
+
 input {
     margin: 10px 0;
     padding: 12px;
-    border: none;
+    border: 1px solid gray;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.2);
-    color: wheat;
+    /* color: #ffffff; */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     font-weight: 600;
-    letter-spacing:0.2px;
+    letter-spacing: 0.2px;
 }
+
 input:focus {
     outline: none;
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
+
 input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(24, 22, 22, 0.7);
 }
+
 #form input[type="submit"] {
     margin-top: 20px;
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #3498db;
+    background-color: rgba(121, 105, 105, 0.9);
+    color: #fefffe;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
 }
+
 #form input[type="submit"]:hover {
     background-color: #4a90e2;
-    color: #8e44ad;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
 p {
     text-align: center;
     margin-top: 20px;
-    color: rgba(255, 255, 255, 0.8);
+    /* color: rgba(255, 255, 255, 0.8); */
 }
+
 p a {
-    color: #fff;
+    /* color: #ffffff; */
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
 }
+
 p a:hover {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
-.logo_img{
+
+.logo_img {
     height: 45px;
     object-fit: contain;
     display: flex;
