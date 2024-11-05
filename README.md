@@ -68,3 +68,9 @@ Follow these steps to start using the collaborative whiteboard application:
 - Js
 - Firebase
 
+##Image of project
+![image](https://github.com/user-attachments/assets/eda749f5-9686-4017-8ccc-767820f2540f)
+![image](https://github.com/user-attachments/assets/6c3aa414-54c2-4c65-841d-a5c5e11db3a9)
+
+
+
